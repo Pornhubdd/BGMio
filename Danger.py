@@ -191,8 +191,8 @@ def handle_attack_command(message):
             return
 
         bot.send_message(chat_id, "*💣 Ready to launch an attack?*\n"  # Ready to launch message
-                                   "*Please provide the target IP, port, and duration in seconds.*\n"  # Provide details message
-                                   "*Example: 167.67.25 6296 60* 🔥\n"  # Example message
+
+"*Example: 167.67.25 6296 60* 🔥\n"  # Example message
                                    "*Let the chaos begin! 🎉*", parse_mode='Markdown')  # Start chaos message
         bot.register_next_step_handler(message, process_attack_command)
 
