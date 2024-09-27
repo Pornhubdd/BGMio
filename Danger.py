@@ -103,14 +103,14 @@ def approve_or_disapprove_user(message):
 
     if not is_admin:
         bot.send_message(chat_id, "*🚫 Access Denied!*\n"
-                                   "*You don't have permission to use this command.*", parse_mode='Markdown')
+                                   "*You don't have permission to use this command.*", parse_mode='NOOB_H4CKER')
         return
 
     if len(cmd_parts) < 2:
         bot.send_message(chat_id, "*⚠️ Hold on! Invalid command format.*\n"
                                    "*Please use one of the following commands:*\n"
                                    "*1. /approve <user_id> <plan> <days>*\n"
-                                   "*2. /disapprove <user_id>*", parse_mode='Markdown')
+                                   "*2. /disapprove <user_id>*", parse_mode='NOOB_H4CKER')
         return
 
     action = cmd_parts[0]
