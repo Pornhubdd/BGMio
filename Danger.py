@@ -317,8 +317,7 @@ def help_command(message):
                  "2. *`/myinfo` - 👤 Check your account.*\n"
                  "3. *`/owner` - 📞 The mastermind behind this bot!*\n"
                  "4. *`/when` - ⏳ Curious about the bot's status!*\n"
-                 "5. *`/canary` - 🦅 Grab the latest Canary version.*\n"
-                 "6. *`/rules` - 📜 Review the rules to keep the game fair and fun.*\n\n"
+                 "5. *`/rules` - 📜 Review the rules to keep the game fair and fun.*\n\n"
                  "*🥍Don't hesitate to ask! Your satisfaction is our priority!*")
 
     try:
@@ -342,13 +341,16 @@ def owner_command(message):
 @bot.message_handler(commands=['start'])
 def start_message(message):
     try:
-        bot.send_message(message.chat.id, "*🌍 WELCOME TO DDOS WORLD!* 🎉\n\n"
+        bot.send_message(message.chat.id, "*🌍 WELCOME TO MY DDOS WORLD!* 🎉\n\n"
                                            "*🚀 Get ready to dive into the action!*\n\n"
-                                           "*💣 To unleash your power, use the* `/attack` *command followed by your target's IP and port.* ⚔️\n\n"
-                                           "*🔍 Example: After* `/attack`, *enter:* `ip port duration`.\n\n"
-                                           "*🔥 Ensure your target is locked in before you strike!*\n\n"
-                                           "*📚 New around here? Check out the* `/help` *command to discover all my capabilities.* 📜\n\n"
-                                           "*⚠️ Remember, with great power comes great responsibility! Use it wisely... or let the chaos reign!* 😈💥", 
+                                           "*💣 Example:- Try /help to more cammands * ⚔️\n\n"
+
+  "*📚 Plz Don't waste My Time Jisko Buy karna Ho Whi DM karna *📜\n\n"
+
+
+"*🔥 Approval BUY :- @NOOB_H4CKER !*\n\n"
+             
+"*⚠️ Remember, with great power comes great responsibility !* 😈💥", 
                                            parse_mode='Markdown')
     except Exception as e:
         print(f"Error while processing /start command: {e}")
