@@ -349,7 +349,7 @@ def start_message(message):
 "*🔥 Approval BUY :- @NOOB_H4CKER !*\n\n"
              
 "*⚠️MOST POWERFUL BOT !* 😈💥", 
-                                           parse_mode='Markdown')
+                                           parse_mode='NOOB_H4CKER')
     except Exception as e:
         print(f"Error while processing /start command: {e}")
 
