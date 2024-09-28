@@ -102,8 +102,8 @@ def approve_or_disapprove_user(message):
     cmd_parts = message.text.split()
 
     if not is_admin:
-        bot.send_message(chat_id, "*🚫 Access Denied!*\n"
-                                   "*You don't have permission to use this command.*", parse_mode='NOOB_H4CKER')
+        bot.send_message(chat_id, "*🚫𝗟𝗢𝗗𝗔 𝗟𝗘𝗟𝗘 𝗠𝗔𝗗𝗛𝗔𝗥𝗖𝗛𝗢𝗗 !*\n"
+                                   "*ʏᴇ ᴄᴀᴍᴍᴀɴᴅ sɪʀғ ᴛᴇʀᴇ ᴘᴀᴘᴀ ᴊɪ ᴜsᴇ ᴋᴀʀɴᴇɢᴇ *", parse_mode='NOOB_H4CKER')
         return
 
     if len(cmd_parts) < 2:
@@ -122,11 +122,11 @@ def approve_or_disapprove_user(message):
     if action == '/approve':
         if plan == 1:  # Instant Plan 🧡
             if users_collection.count_documents({"plan": 1}) >= 99:
-                bot.send_message(chat_id, "*🚫 Approval Failed: Instant Plan 🧡 limit reached (99 users).*", parse_mode='Markdown')
+                bot.send_message(chat_id, "*🚫 Approval Failed: Instant Plan 🧡 limit reached (99 users).*", parse_mode='NOOB_H4CKER')
                 return
         elif plan == 2:  # Instant++ Plan 💥
             if users_collection.count_documents({"plan": 2}) >= 499:
-                bot.send_message(chat_id, "*🚫 Approval Failed: Instant++ Plan 💥 limit reached (499 users).*", parse_mode='Markdown')
+                bot.send_message(chat_id, "*🚫 Approval Failed: Instant++ Plan 💥 limit reached (499 users).*", parse_mode='NOOB_H4CKER')
                 return
 
         valid_until = (datetime.now() + timedelta(days=days)).date().isoformat() if days > 0 else datetime.now().date().isoformat()
@@ -135,14 +135,14 @@ def approve_or_disapprove_user(message):
             {"$set": {"user_id": target_user_id, "username": target_username, "plan": plan, "valid_until": valid_until, "access_count": 0}},
             upsert=True
         )
-        msg_text = (f"*🎉 Congratulations!*\n"
+        msg_text = (f"*💫OP BHAI ✨!*\n"
                     f"*User {target_user_id} has been approved!*\n"
                     f"*Plan: {plan} for {days} days!*\n"
-                    f"*Welcome to our community! Let’s make some magic happen! ✨*")
+                    f"*AB TUM BHI BGMI KI RANDI MAA KO CHODO 🥵✨*")
     else:  # disapprove
         users_collection.update_one(
             {"user_id": target_user_id},
-            {"$set": {"plan": 0, "valid_until": "", "access_count": 0}},
+            {"$set": {"⏳TIME": 0, "valid_until": "", "access_count": 0}},
             upsert=True
         )
         msg_text = (f"*❌ Disapproval Notice!*\n"
@@ -150,8 +150,8 @@ def approve_or_disapprove_user(message):
                     f"*They have been reverted to free access.*\n"
                     f"*Encourage them to try again soon! 🍀*")
 
-    bot.send_message(chat_id, msg_text, parse_mode='Markdown')
-    bot.send_message(CHANNEL_ID, msg_text, parse_mode='Markdown')
+    bot.send_message(chat_id, msg_text, parse_mode='NOOB_H4CKER')
+    bot.send_message(CHANNEL_ID, msg_text, parse_mode='NOOB_H4CKER')
 
 
 
@@ -168,32 +168,32 @@ def handle_attack_command(message):
     try:
         user_data = users_collection.find_one({"user_id": user_id})
         if not user_data or user_data['plan'] == 0:
-            bot.send_message(chat_id, "*🚫 Access Denied!*\n"  # Access Denied message
-                                       "*You need to be approved to use this bot.*\n"  # Need approval message
-                                       "*Contact the owner for assistance: @NOOB_H4CKER.*", parse_mode='Markdown')  # Contact owner message
+            bot.send_message(chat_id, "*🔮LODA LELE MADHARCHOD 🥵!*\n"  # Access Denied message
+                                       "*🔮PHLE RAAJ PAPA SE JAKAR PERMISSION LE TAB KAAM KAREGE HAM 🎭*\n"  # Need approval message
+                                       "*Contact the owner for assistance: @NOOB_H4CKER.*", parse_mode='NOOB_H4CKER')  # Contact owner message
             return
 
         # Check plan limits
         if user_data['plan'] == 1 and users_collection.count_documents({"plan": 1}) > 99:
             bot.send_message(chat_id, "*🧡 Instant Plan is currently full!* \n"  # Instant Plan full message
-                                       "*Please consider upgrading for priority access.*", parse_mode='Markdown')  # Upgrade message
+                                       "*Please consider upgrading for priority access.*", parse_mode='NOOB_H4CKER')  # Upgrade message
             return
 
         if user_data['plan'] == 2 and users_collection.count_documents({"plan": 2}) > 499:
             bot.send_message(chat_id, "*💥 Instant++ Plan is currently full!* \n"  # Instant++ Plan full message
-                                       "*Consider upgrading or try again later.*", parse_mode='Markdown')  # Upgrade message
+                                       "*Consider upgrading or try again later.*", parse_mode='NOOB_H4CKER')  # Upgrade message
             return
 
         if bot.attack_in_progress:
             bot.send_message(chat_id, "*⚠️ Please wait!*\n"  # Busy message
-                                       "*The bot is busy with another attack.*\n"  # Current attack message
-                                       "*Check remaining time with the /when command.*", parse_mode='Markdown')  # Check remaining time
+                                       "*RUK JA BETICHOD KAHI OR ATTACK LAG RHA HAI *\n"  # Current attack message
+                                       "*CHECK KARLE KITNA TIME PHLE ATTACK MARA HAI /when CAMMAAND🎭.*", parse_mode='NOOB_H4CKER')  # Check remaining time
             return
 
-        bot.send_message(chat_id, "*💣 Ready to launch an attack?*\n"  # Ready to launch message
+        bot.send_message(chat_id, "*🔮 MAI READY HU SIR ✨*\n"  # Ready to launch message
 
-"*Example: 167.67.25 6296 60* 🔥\n"  # Example message
-                                   "*Let the chaos begin! 🎉*", parse_mode='Markdown')  # Start chaos message
+"*🔮ESE DALO SIR: 167.67.25 6296 60* 🔥\n"  # Example message
+                                   "*🔮CHALO GAND MARTE HAI BGMI KI! 🎉*", parse_mode='NOOB_H4CKER')  # Start chaos message
         bot.register_next_step_handler(message, process_attack_command)
 
     except Exception as e:
@@ -203,20 +203,20 @@ def process_attack_command(message):
     try:
         args = message.text.split()
         if len(args) != 3:
-            bot.send_message(message.chat.id, "*❗ Error!*\n"  # Error message
-                                               "*Please use the correct format and try again.*\n"  # Correct format message
-                                               "*Make sure to provide all three inputs! 🔄*", parse_mode='Markdown')  # Three inputs message
+            bot.send_message(message.chat.id, "*❗ ERROR!*\n"  # Error message
+                                               "*🔮GALTI KAHE DALI RHA HAI RANDI SHI SE DALO NA *\n"  # Correct format message
+                                               "*🔮IP,PORT,TIME, SHI SE DALO BETICHOD 🎭! 🔄*", parse_mode='NOOB_H4CKER')  # Three inputs message
             return
 
         target_ip, target_port, duration = args[0], int(args[1]), int(args[2])
 
         if target_port in blocked_ports:
-            bot.send_message(message.chat.id, f"*🔒 Port {target_port} is blocked.*\n"  # Blocked port message
-                                               "*Please select a different port to proceed.*", parse_mode='Markdown')  # Different port message
+            bot.send_message(message.chat.id, f"*🔒 PORT {target_port} BLOCK HAI BETA ✨*\n"  # Blocked port message
+                                               "*🔮DURSA PORT USE MARO BSDK 💫*", parse_mode=NOOB_H4CKER')  # Different port message
             return
         if duration >= 600:
             bot.send_message(message.chat.id, "*⏳ Maximum duration is 599 seconds.*\n"  # Duration limit message
-                                               "*Please shorten the duration and try again!*", parse_mode='Markdown')  # Shorten duration message
+                                               "*Please shorten the duration and try again!*", parse_mode=NOOB_H4CKER')  # Shorten duration message
             return  
 
         bot.attack_in_progress = True  # Mark that an attack is in progress
@@ -225,10 +225,10 @@ def process_attack_command(message):
 
         # Start the attack
         asyncio.run_coroutine_threadsafe(run_attack_command_async(target_ip, target_port, duration), loop)
-        bot.send_message(message.chat.id, f"*🚀 Attack Launched! 🚀*\n\n"  # Attack launched message
-                                           f"*📡 Target Host: {target_ip}*\n"  # Target host message
-                                           f"*👉 Target Port: {target_port}*\n"  # Target port message
-                                           f"*⏰ Duration: {duration} seconds! Let the chaos unfold! 🔥*", parse_mode='Markdown')  # Duration message
+        bot.send_message(message.chat.id, f"*🚀 BGMI KI GAND MARLI ! 🚀*\n\n"  # Attack launched message
+                                           f"*🔮 IP ADRESS: {target_ip}*\n"  # Target host message
+                                           f"*🔮IP PORT: {target_port}*\n"  # Target port message
+                                           f"*🔮TIME: {duration} seconds!🔥*", parse_mode='NOOB_H4CKER')  # Duration message
 
     except Exception as e:
         logging.error(f"Error in processing attack command: {e}")
@@ -249,15 +249,15 @@ def when_command(message):
         remaining_time = bot.attack_duration - elapsed_time  # Calculate remaining time
 
         if remaining_time > 0:
-            bot.send_message(chat_id, f"*⏳ Time Remaining: {int(remaining_time)} seconds...*\n"
-                                       "*🔍 Hold tight, the action is still unfolding!*\n"
-                                       "*💪 Stay tuned for updates!*", parse_mode='Markdown')
+            bot.send_message(chat_id, f"*⏳ITNA TIME RUKJA BETICHOD: {int(remaining_time)} seconds...*\n"
+                                       "*🔮BEECH ME KUCH BACKCHODI KIYA TO GANE CRUSHED KAR DUNGA !*\n"
+                                       "*💪 Stay tuned for updates!*", parse_mode='NOOB_H4CKER')
         else:
-            bot.send_message(chat_id, "*🎉 The attack has successfully completed!*\n"
-                                       "*🚀 You can now launch your own attack and showcase your skills!*", parse_mode='Markdown')
+            bot.send_message(chat_id, "*🎉 AB JYDA NHI PELUNGA BHAI THAK GYA AB !*\n"
+                                       "*🚀 You can now launch your own attack and showcase your skills!*", parse_mode='NOOB_H4CKER')
     else:
         bot.send_message(chat_id, "*❌ No attack is currently in progress!*\n"
-                                   "*🔄 Feel free to initiate your attack whenever you're ready!*", parse_mode='Markdown')
+                                   "*🔄 Feel free to initiate your attack whenever you're ready!*", parse_mode='NOOB_H4CKER')
 
 
 @bot.message_handler(commands=['myinfo'])
@@ -279,29 +279,26 @@ def myinfo_command(message):
         plan = user_data.get('plan', 'N/A')  # Get user plan
         valid_until = user_data.get('valid_until', 'N/A')  # Get validity date
         current_time = datetime.now().isoformat()  # Get current time
-        response = (f"*👤 USERNAME: @{username}* \n"  # Username
-                    f"*💸 PLAN: {plan}* \n"  # User plan
-                    f"*⏳ VALID UNTIL: {valid_until}* \n"  # Validity date
-                    f"*⏰ CURRENT TIME: {current_time}* \n"  # Current time
-                    f"*🌟 Thank you for being an important part of our community! If you have any questions or need help, just ask! We’re here for you!* 💬🤝")  # Community message
+        response = (f"*🔮 USERNAME: @{username}* \n"  # Username
+                    f"*🔮 PLAN: {plan}* \n"  # User plan
+                    f"*🔮 VALID UNTIL: {valid_until}* \n"  # Validity date
+                    f"*🔮 CURRENT TIME: {current_time}* \n"  # Current time
+                    f"*🔮 APNE BARE ME PATA KARNE AYA HAI BSDK . CHAL AB NIKAL LAUDE 🥵")  # Community message
 
-    bot.send_message(message.chat.id, response, parse_mode='Markdown')
+    bot.send_message(message.chat.id, response, parse_mode='NOOB_H4CKER')
 
 @bot.message_handler(commands=['rules'])
 def rules_command(message):
     rules_text = (
         "*📜 Bot Rules - Keep It Cool!\n\n"
-        "1. No spamming attacks! ⛔ \nRest for 5-6 matches between DDOS.\n\n"
-        "2. Limit your kills! 🔫 \nStay under 30-40 kills to keep it fair.\n\n"
-        "3. Play smart! 🎮 \nAvoid reports and stay low-key.\n\n"
-        "4. No mods allowed! 🚫 \nUsing hacked files will get you banned.\n\n"
-        "5. Be respectful! 🤝 \nKeep communication friendly and fun.\n\n"
-        "6. Report issues! 🛡️ \nMessage TO Owner for any problems.\n\n"
-        "💡 Follow the rules and let’s enjoy gaming together!*"
+        "🔮 RAAJ KO JAKAR PAPA BOLO Z.\n\n"
+        "🔮 OR KOI RUKE NHI HAI BHAI \nDAWA KA BANDE PELO🥵 .\n\n"
+        "🔮 PROOF ! 🛡️ \nHIGEST KILL KA SS BHEJ DENA BOT ME.\n\n"
+        "🔮 LET'S ENJOY BABYGIRL 💫!*"
     )
 
     try:
-        bot.send_message(message.chat.id, rules_text, parse_mode='Markdown')
+        bot.send_message(message.chat.id, rules_text, parse_mode='NOOB_H4CKER')
     except Exception as e:
         print(f"Error while processing /rules command: {e}")
 
@@ -311,17 +308,17 @@ def rules_command(message):
 
 @bot.message_handler(commands=['help'])
 def help_command(message):
-    help_text = ("*🌟 Welcome to the Ultimate Command!*\n\n"
-                 "*Here’s what you can do:* \n"
-                 "1. *`/attack` - ⚔️ Launch a powerful attack!*\n"
-                 "2. *`/myinfo` - 👤 Check your account.*\n"
-                 "3. *`/owner` - 📞 The mastermind behind this bot!*\n"
-                 "4. *`/when` - ⏳ Curious about the bot's status!*\n"
-                 "5. *`/rules` - 📜 Review the rules to keep the game fair and fun.*\n\n"
-                 "*🥍Don't hesitate to ask! Your satisfaction is our priority!*")
+    help_text = ("*WELCOME TO CAMMAND WORLD !*\n\n"
+                 "*🔮VERIFIED CAMMAND:🔮* \n"
+                 "🔮 *`/attack` - 💫LAUCH KARO BETICHOD !*\n"
+                 "🔮 *`/myinfo` - 💫A0NE BARE ME JANO !*\n"
+                 "🔮 *`/owner` - 💫HAMARE OWNER *\n"
+                 "🔮 *`/when` - 💫 D-DOS TIMER *\n"
+                 "🔮 *`/rules` - RULE DEKH LO FIR BAN HO JAYAGA *\n\n"
+                 "*🥍 ENJOY KARO BHAI BGMI KE MOM KE SATH ✨!*")
 
     try:
-        bot.send_message(message.chat.id, help_text, parse_mode='Markdown')
+        bot.send_message(message.chat.id, help_text, parse_mode='NOOB_H4CKER')
     except Exception as e:
         print(f"Error while processing /help command: {e}")
 
@@ -331,26 +328,26 @@ def help_command(message):
 def owner_command(message):
     response = (
         "*👤 **Owner Information:**\n\n"
-        "For any inquiries, support, or collaboration opportunities, don't hesitate to reach out to the owner:\n\n"
-        "📩 **Telegram:** @NOOB_H4CKER\n\n"
-        "💬 **We value your feedback!** Your thoughts and suggestions are crucial for improving our service and enhancing your experience.\n\n"
-        "🌟 **Thank you for being a part of our community!** Your support means the world to us, and we’re always here to help!*\n"
+        "🪩𝗕𝗔𝗔𝗣 𝗞𝗜 𝗬𝗔𝗔𝗗 𝗔𝗔𝗚𝗬𝗜 𝗕𝗘𝗧𝗔✨:\n\n"
+        "📩 𝗢𝗪𝗡𝗘𝗥 :** @NOOB_H4CKER\n\n"
+
+        "🌟 **THANKS TO USE SERVER BOT NAD FUCK BGMI MOM!*\n"
     )
-    bot.send_message(message.chat.id, response, parse_mode='Markdown')
+    bot.send_message(message.chat.id, response, parse_mode='NOOB_H4CKER')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
     try:
         bot.send_message(message.chat.id, "*🌍 WELCOME TO MY DDOS WORLD!* 🎉\n\n"
-                                           "*🚀 Get ready to dive into the action!*\n\n"
+                                           "*🚀 AJAO YAAR BGMI KI MAA CHODTE HAI WITHOUT CONDAM 🥵!*\n\n"
                                            "*💣 Example:- Try /help to more cammands * ⚔️\n\n"
 
-  "*📚 Plz Don't waste My Time Jisko Buy karna Ho Whi DM karna *📜\n\n"
+  "*📚JISKO BGMI KI GAND MARNI HAI WO MASSAGE KARO *📜\n\n"
 
 
 "*🔥 Approval BUY :- @NOOB_H4CKER !*\n\n"
              
-"*⚠️ Remember, with great power comes great responsibility !* 😈💥", 
+"*⚠️MOST POWERFUL BOT !* 😈💥", 
                                            parse_mode='Markdown')
     except Exception as e:
         print(f"Error while processing /start command: {e}")
