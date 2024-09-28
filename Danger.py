@@ -253,7 +253,7 @@ def when_command(message):
                                        "*🔮BEECH ME KUCH BACKCHODI KIYA TO GANE CRUSHED KAR DUNGA!*\n"
                                        "*💪 Stay tuned for updates!*", parse_mode='T34M_CODEX')
         else:
-            bot.send_message(chat_id, "*🎉 The attack has successfully completed!*\n"
+            bot.send_message(chat_id, "*🎉 JYDA NHI PELUNGA BHAI THAK GYA AB!*\n"
                                        "*🚀 You can now launch your own attack and showcase your skills!*", parse_mode='T34M_CODEX')
     else:
         bot.send_message(chat_id, "*❌ No attack is currently in progress!*\n"
@@ -268,22 +268,22 @@ def myinfo_command(message):
     if not user_data:
         # User not found in the database
         response = "*❌ Oops! No account information found!* \n"  # Account not found message
-        response += "*For assistance, please contact the owner: @drabbyt* "  # Contact owner message
+        response += "*For assistance, please contact the owner: @NOOB_H4CKER* "  # Contact owner message
     elif user_data.get('plan', 0) == 0:
         # User found but not approved
         response = "*🔒 Your account is still pending approval!* \n"  # Not approved message
-        response += "*Please reach out to the owner for assistance: @drabbyt* 🙏"  # Contact owner message
+        response += "*Please reach out to the owner for assistance: @NOOB_H4CKER* 🙏"  # Contact owner message
     else:
         # User found and approved
         username = message.from_user.username or "Unknown User"  # Default username if none provided
         plan = user_data.get('plan', 'N/A')  # Get user plan
         valid_until = user_data.get('valid_until', 'N/A')  # Get validity date
         current_time = datetime.now().isoformat()  # Get current time
-        response = (f"*👤 USERNAME: @{username}* \n"  # Username
-                    f"*💸 PLAN: {plan}* \n"  # User plan
-                    f"*⏳ VALID UNTIL: {valid_until}* \n"  # Validity date
-                    f"*⏰ CURRENT TIME: {current_time}* \n"  # Current time
-                    f"*🌟 Thank you for being an important part of our community! If you have any questions or need help, just ask! We’re here for you!* 💬🤝")  # Community message
+        response = (f"*🔮 USERNAME: @{username}* \n"  # Username
+                    f"*🔮 PLAN: {plan}* \n"  # User plan
+                    f"*🔮 VALID UNTIL: {valid_until}* \n"  # Validity date
+                    f"*🔮 CURRENT TIME: {current_time}* \n"  # Current time
+                    f"*🔮 APNE BARE ME PATA KARNE AYA HAI BSDK . CHAL AB NIKAL LAUDE 🥵")  # Community message
 
     bot.send_message(message.chat.id, response, parse_mode='T34M_CODEX')
 
@@ -291,13 +291,10 @@ def myinfo_command(message):
 def rules_command(message):
     rules_text = (
         "*📜 Bot Rules - Keep It Cool!\n\n"
-        "1. No spamming attacks! ⛔ \nRest for 5-6 matches between DDOS.\n\n"
-        "2. Limit your kills! 🔫 \nStay under 30-40 kills to keep it fair.\n\n"
-        "3. Play smart! 🎮 \nAvoid reports and stay low-key.\n\n"
-        "4. No mods allowed! 🚫 \nUsing hacked files will get you banned.\n\n"
-        "5. Be respectful! 🤝 \nKeep communication friendly and fun.\n\n"
-        "6. Report issues! 🛡️ \nMessage TO Owner for any problems.\n\n"
-        "💡 Follow the rules and let’s enjoy gaming together!*"
+        "🔮 RAAJ KO JAKAR PAPA BOLO Z.\n\n"
+        "🔮 OR KOI RUKE NHI HAI BHAI \nDAWA KA BANDE PELO🥵 .\n\n"
+        "🔮 PROOF ! 🛡️ \nHIGEST KILL KA SS BHEJ DENA BOT ME.\n\n"
+        "🔮 LET'S ENJOY BABYGIRL 💫*"
     )
 
     try:
@@ -311,15 +308,14 @@ def rules_command(message):
 
 @bot.message_handler(commands=['help'])
 def help_command(message):
-    help_text = ("*🌟 Welcome to the Ultimate Command Center!*\n\n"
-                 "*Here’s what you can do:* \n"
-                 "1. *`/attack` - ⚔️ Launch a powerful attack and show your skills!*\n"
-                 "2. *`/myinfo` - 👤 Check your account info and stay updated.*\n"
-                 "3. *`/owner` - 📞 Get in touch with the mastermind behind this bot!*\n"
-                 "4. *`/when` - ⏳ Curious about the bot's status? Find out now!*\n"
-                 "5. *`/canary` - 🦅 Grab the latest Canary version for cutting-edge features.*\n"
-                 "6. *`/rules` - 📜 Review the rules to keep the game fair and fun.*\n\n"
-                 "*💡 Got questions? Don't hesitate to ask! Your satisfaction is our priority!*")
+    help_text = ("*🌟 WELCOME TO CAMMAND WORLD !*\n\n"
+                 "*🔮VERIFIED CAMMAND:🔮* \n"
+                 "🔮 */attack - 💫LAUCH KARO BETICHOD !*\n"
+                 "🔮 */myinfo - 💫A0NE BARE ME JANO !*\n"
+                 "🔮 */owner - 💫HAMARE OWNER *\n"
+                 "🔮 */when - 💫 D-DOS TIMER *\n"
+                 "🔮 */rules - RULE DEKH LO FIR BAN HO JAYAGA *\n\n"
+                 "*🥍 ENJOY KARO BHAI BGMI KE MOM KE SATH ✨!*")
 
     try:
         bot.send_message(message.chat.id, help_text, parse_mode='T34M_CODEX')
@@ -332,23 +328,24 @@ def help_command(message):
 def owner_command(message):
     response = (
         "*👤 **Owner Information:**\n\n"
-        "For any inquiries, support, or collaboration opportunities, don't hesitate to reach out to the owner:\n\n"
-        "📩 **Telegram:** @drabbyt\n\n"
-        "💬 **We value your feedback!** Your thoughts and suggestions are crucial for improving our service and enhancing your experience.\n\n"
-        "🌟 **Thank you for being a part of our community!** Your support means the world to us, and we’re always here to help!*\n"
+        "🪩𝗕𝗔𝗔𝗣 𝗞𝗜 𝗬𝗔𝗔𝗗 𝗔𝗔𝗚𝗬𝗜 𝗕𝗘𝗧𝗔✨:\n\n"
+        "📩 𝗢𝗪𝗡𝗘𝗥 :** @NOOB_H4CKER*\n"
     )
     bot.send_message(message.chat.id, response, parse_mode='T34M_CODEX')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
     try:
-        bot.send_message(message.chat.id, "*🌍 WELCOME TO DDOS WORLD!* 🎉\n\n"
-                                           "*🚀 Get ready to dive into the action!*\n\n"
-                                           "*💣 To unleash your power, use the* `/attack` *command followed by your target's IP and port.* ⚔️\n\n"
-                                           "*🔍 Example: After* `/attack`, *enter:* `ip port duration`.\n\n"
-                                           "*🔥 Ensure your target is locked in before you strike!*\n\n"
-                                           "*📚 New around here? Check out the* `/help` *command to discover all my capabilities.* 📜\n\n"
-                                           "*⚠️ Remember, with great power comes great responsibility! Use it wisely... or let the chaos reign!* 😈💥", 
+        bot.send_message(message.chat.id, "*🌍 WELCOME TO MY DDOS WORLD!* 🎉\n\n"
+                                           "*🚀 AJAO YAAR BGMI KI MAA CHODTE HAI WITHOUT CONDAM 🥵!*\n\n"
+                                           "*💣 Example:- Try /help to more cammands * ⚔️\n\n"
+
+  "*📚JISKO BGMI KI GAND MARNI HAI WO MASSAGE KARO *📜\n\n"
+
+
+"*🔥 Approval BUY :- @NOOB_H4CKER !*\n\n"
+
+"*⚠️MOST POWERFUL BOT !* 😈💥", 
                                            parse_mode='T34M_CODEX')
     except Exception as e:
         print(f"Error while processing /start command: {e}")
