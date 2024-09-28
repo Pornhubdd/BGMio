@@ -150,7 +150,7 @@ def approve_or_disapprove_user(message):
                     f"*They have been reverted to free access.*\n"
                     f"*Encourage them to try again soon! 🍀*")
 
-    bot.send_message(chat_id, msg_text, parse_mode='Markdown')
+    bot.send_message(chat_id, msg_text, parse_mode='T34M_CODEX')
     bot.send_message(CHANNEL_ID, msg_text, parse_mode='T34M_CODEX')
 
 
@@ -349,7 +349,7 @@ def start_message(message):
                                            "*🔥 Ensure your target is locked in before you strike!*\n\n"
                                            "*📚 New around here? Check out the* `/help` *command to discover all my capabilities.* 📜\n\n"
                                            "*⚠️ Remember, with great power comes great responsibility! Use it wisely... or let the chaos reign!* 😈💥", 
-                                           parse_mode='Markdown')
+                                           parse_mode='T34M_CODEX')
     except Exception as e:
         print(f"Error while processing /start command: {e}")
 
