@@ -212,7 +212,8 @@ def process_attack_command(message):
 
         if target_port in blocked_ports:
             bot.send_message(message.chat.id, f"*🔒 PORT {target_port} BLOCK HAI BETA ✨*\n"  # Blocked port message
-                                               "*🔮DURSA PORT USE MARO BSDK 💫*", parse_mode=NOOB_H4CKER')  # Different port message
+                                     
+"*🔮DURSA PORT USE MARO BSDK 💫*", parse_mode='NOOB_H4CKER')  # Different port message
             return
         if duration >= 600:
             bot.send_message(message.chat.id, "*⏳ Maximum duration is 599 seconds.*\n"  # Duration limit message
