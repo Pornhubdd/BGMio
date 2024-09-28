@@ -16,11 +16,11 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 loop = asyncio.get_event_loop()
 
-TOKEN = '7410870362:AAGBBLVmTvJhOwGGrDbFMUtJlvlf28uZfgk'
+TOKEN = '7500957491:AAGUbiI7jgPsHjRqdyPGZnLpY80wOZXnnx0'
 MONGO_URI = 'mongodb+srv://Cluster0:Cluster0@cluster0.5mvg9ej.mongodb.net/danger?retryWrites=true&w=majority'
-FORWARD_CHANNEL_ID = -1002236932593
-CHANNEL_ID = -1002236932593
-error_channel_id = -1002236932593
+FORWARD_CHANNEL_ID = -1002437393468
+CHANNEL_ID = -1002437393468
+error_channel_id = -1002437393468
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -102,15 +102,15 @@ def approve_or_disapprove_user(message):
     cmd_parts = message.text.split()
 
     if not is_admin:
-        bot.send_message(chat_id, "*🚫 Access Denied!*\n"
-                                   "*You don't have permission to use this command.*", parse_mode='Markdown')
+        bot.send_message(chat_id, "*🚫 𝗟𝗢𝗗𝗔 𝗟𝗘𝗟𝗘 𝗠𝗔𝗗𝗛𝗔𝗥𝗖𝗛𝗢𝗗 !*\n"
+                                   "*🔮ʏᴇ ᴄᴀᴍᴍᴀɴᴅ sɪʀғ ᴛᴇʀᴇ ᴘᴀᴘᴀ ᴊɪ ᴜsᴇ ᴋᴀʀɴᴇɢᴇ.*", parse_mode='T34M_CODEX')
         return
 
     if len(cmd_parts) < 2:
         bot.send_message(chat_id, "*⚠️ Hold on! Invalid command format.*\n"
                                    "*Please use one of the following commands:*\n"
                                    "*1. /approve <user_id> <plan> <days>*\n"
-                                   "*2. /disapprove <user_id>*", parse_mode='Markdown')
+                                   "*2. /disapprove <user_id>*", parse_mode='T34M_CODEX')
         return
 
     action = cmd_parts[0]
@@ -122,11 +122,11 @@ def approve_or_disapprove_user(message):
     if action == '/approve':
         if plan == 1:  # Instant Plan 🧡
             if users_collection.count_documents({"plan": 1}) >= 99:
-                bot.send_message(chat_id, "*🚫 Approval Failed: Instant Plan 🧡 limit reached (99 users).*", parse_mode='Markdown')
+                bot.send_message(chat_id, "*🚫 Approval Failed: Instant Plan 🧡 limit reached (99 users).*", parse_mode='T34M_CODEX')
                 return
         elif plan == 2:  # Instant++ Plan 💥
             if users_collection.count_documents({"plan": 2}) >= 499:
-                bot.send_message(chat_id, "*🚫 Approval Failed: Instant++ Plan 💥 limit reached (499 users).*", parse_mode='Markdown')
+                bot.send_message(chat_id, "*🚫 Approval Failed: Instant++ Plan 💥 limit reached (499 users).*", parse_mode='T34M_CODEX')
                 return
 
         valid_until = (datetime.now() + timedelta(days=days)).date().isoformat() if days > 0 else datetime.now().date().isoformat()
@@ -151,7 +151,7 @@ def approve_or_disapprove_user(message):
                     f"*Encourage them to try again soon! 🍀*")
 
     bot.send_message(chat_id, msg_text, parse_mode='Markdown')
-    bot.send_message(CHANNEL_ID, msg_text, parse_mode='Markdown')
+    bot.send_message(CHANNEL_ID, msg_text, parse_mode='T34M_CODEX')
 
 
 
@@ -170,30 +170,30 @@ def handle_attack_command(message):
         if not user_data or user_data['plan'] == 0:
             bot.send_message(chat_id, "*🚫 Access Denied!*\n"  # Access Denied message
                                        "*You need to be approved to use this bot.*\n"  # Need approval message
-                                       "*Contact the owner for assistance: @drabbyt.*", parse_mode='Markdown')  # Contact owner message
+                                       "*Contact the owner for assistance: @drabbyt.*", parse_mode='T34M_CODEX')  # Contact owner message
             return
 
         # Check plan limits
         if user_data['plan'] == 1 and users_collection.count_documents({"plan": 1}) > 99:
             bot.send_message(chat_id, "*🧡 Instant Plan is currently full!* \n"  # Instant Plan full message
-                                       "*Please consider upgrading for priority access.*", parse_mode='Markdown')  # Upgrade message
+                                       "*Please consider upgrading for priority access.*", parse_mode='T34M_CODEX')  # Upgrade message
             return
 
         if user_data['plan'] == 2 and users_collection.count_documents({"plan": 2}) > 499:
             bot.send_message(chat_id, "*💥 Instant++ Plan is currently full!* \n"  # Instant++ Plan full message
-                                       "*Consider upgrading or try again later.*", parse_mode='Markdown')  # Upgrade message
+                                       "*Consider upgrading or try again later.*", parse_mode='T34M_CODEX')  # Upgrade message
             return
 
         if bot.attack_in_progress:
             bot.send_message(chat_id, "*⚠️ Please wait!*\n"  # Busy message
                                        "*The bot is busy with another attack.*\n"  # Current attack message
-                                       "*Check remaining time with the /when command.*", parse_mode='Markdown')  # Check remaining time
+                                       "*Check remaining time with the /when command.*", parse_mode='T34M_CODEX')  # Check remaining time
             return
 
         bot.send_message(chat_id, "*💣 Ready to launch an attack?*\n"  # Ready to launch message
                                    "*Please provide the target IP, port, and duration in seconds.*\n"  # Provide details message
                                    "*Example: 167.67.25 6296 60* 🔥\n"  # Example message
-                                   "*Let the chaos begin! 🎉*", parse_mode='Markdown')  # Start chaos message
+                                   "*Let the chaos begin! 🎉*", parse_mode='T34M_CODEX')  # Start chaos message
         bot.register_next_step_handler(message, process_attack_command)
 
     except Exception as e:
@@ -205,18 +205,18 @@ def process_attack_command(message):
         if len(args) != 3:
             bot.send_message(message.chat.id, "*❗ Error!*\n"  # Error message
                                                "*Please use the correct format and try again.*\n"  # Correct format message
-                                               "*Make sure to provide all three inputs! 🔄*", parse_mode='Markdown')  # Three inputs message
+                                               "*Make sure to provide all three inputs! 🔄*", parse_mode='T34M_CODEX')  # Three inputs message
             return
 
         target_ip, target_port, duration = args[0], int(args[1]), int(args[2])
 
         if target_port in blocked_ports:
             bot.send_message(message.chat.id, f"*🔒 Port {target_port} is blocked.*\n"  # Blocked port message
-                                               "*Please select a different port to proceed.*", parse_mode='Markdown')  # Different port message
+                                               "*Please select a different port to proceed.*", parse_mode='T34M_CODEX')  # Different port message
             return
         if duration >= 600:
             bot.send_message(message.chat.id, "*⏳ Maximum duration is 599 seconds.*\n"  # Duration limit message
-                                               "*Please shorten the duration and try again!*", parse_mode='Markdown')  # Shorten duration message
+                                               "*Please shorten the duration and try again!*", parse_mode='T34M_CODEX')  # Shorten duration message
             return  
 
         bot.attack_in_progress = True  # Mark that an attack is in progress
@@ -228,7 +228,7 @@ def process_attack_command(message):
         bot.send_message(message.chat.id, f"*🚀 Attack Launched! 🚀*\n\n"  # Attack launched message
                                            f"*📡 Target Host: {target_ip}*\n"  # Target host message
                                            f"*👉 Target Port: {target_port}*\n"  # Target port message
-                                           f"*⏰ Duration: {duration} seconds! Let the chaos unfold! 🔥*", parse_mode='Markdown')  # Duration message
+                                           f"*⏰ Duration: {duration} seconds! Let the chaos unfold! 🔥*", parse_mode='T34M_CODEX')  # Duration message
 
     except Exception as e:
         logging.error(f"Error in processing attack command: {e}")
@@ -251,13 +251,13 @@ def when_command(message):
         if remaining_time > 0:
             bot.send_message(chat_id, f"*⏳ Time Remaining: {int(remaining_time)} seconds...*\n"
                                        "*🔍 Hold tight, the action is still unfolding!*\n"
-                                       "*💪 Stay tuned for updates!*", parse_mode='Markdown')
+                                       "*💪 Stay tuned for updates!*", parse_mode='T34M_CODEX')
         else:
             bot.send_message(chat_id, "*🎉 The attack has successfully completed!*\n"
-                                       "*🚀 You can now launch your own attack and showcase your skills!*", parse_mode='Markdown')
+                                       "*🚀 You can now launch your own attack and showcase your skills!*", parse_mode='T34M_CODEX')
     else:
         bot.send_message(chat_id, "*❌ No attack is currently in progress!*\n"
-                                   "*🔄 Feel free to initiate your attack whenever you're ready!*", parse_mode='Markdown')
+                                   "*🔄 Feel free to initiate your attack whenever you're ready!*", parse_mode='T34M_CODEX')
 
 
 @bot.message_handler(commands=['myinfo'])
@@ -285,7 +285,7 @@ def myinfo_command(message):
                     f"*⏰ CURRENT TIME: {current_time}* \n"  # Current time
                     f"*🌟 Thank you for being an important part of our community! If you have any questions or need help, just ask! We’re here for you!* 💬🤝")  # Community message
 
-    bot.send_message(message.chat.id, response, parse_mode='Markdown')
+    bot.send_message(message.chat.id, response, parse_mode='T34M_CODEX')
 
 @bot.message_handler(commands=['rules'])
 def rules_command(message):
@@ -322,7 +322,7 @@ def help_command(message):
                  "*💡 Got questions? Don't hesitate to ask! Your satisfaction is our priority!*")
 
     try:
-        bot.send_message(message.chat.id, help_text, parse_mode='Markdown')
+        bot.send_message(message.chat.id, help_text, parse_mode='T34M_CODEX')
     except Exception as e:
         print(f"Error while processing /help command: {e}")
 
@@ -337,7 +337,7 @@ def owner_command(message):
         "💬 **We value your feedback!** Your thoughts and suggestions are crucial for improving our service and enhancing your experience.\n\n"
         "🌟 **Thank you for being a part of our community!** Your support means the world to us, and we’re always here to help!*\n"
     )
-    bot.send_message(message.chat.id, response, parse_mode='Markdown')
+    bot.send_message(message.chat.id, response, parse_mode='T34M_CODEX')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
