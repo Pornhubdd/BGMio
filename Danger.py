@@ -217,7 +217,7 @@ def process_attack_command(message):
             return
         if duration >= 600:
             bot.send_message(message.chat.id, "*⏳ Maximum duration is 599 seconds.*\n"  # Duration limit message
-                                               "*Please shorten the duration and try again!*", parse_mode=NOOB_H4CKER')  # Shorten duration message
+                                               "*Please shorten the duration and try again!*", parse_mode='NOOB_H4CKER')  # Shorten duration message
             return  
 
         bot.attack_in_progress = True  # Mark that an attack is in progress
